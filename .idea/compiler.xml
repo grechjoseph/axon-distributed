@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="axon-commons" />
+        <module name="axon-command" />
+        <module name="axon-query-one" />
+        <module name="axon-query-two" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="axon-command" target="1.8" />
+      <module name="axon-commons" target="1.8" />
+      <module name="axon-query-one" target="1.8" />
+      <module name="axon-query-two" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="axon-command" options="-parameters" />
+      <module name="axon-commons" options="-parameters" />
+      <module name="axon-query-one" options="-parameters" />
+      <module name="axon-query-two" options="-parameters" />
+    </option>
+  </component>
+</project>
