@@ -12,10 +12,10 @@
 	<artifactId>axon-query-two</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>axon-query-two</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Queries Microservice for Axon Demo.</description>
 
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>

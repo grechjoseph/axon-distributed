@@ -13,10 +13,10 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="axon-command" target="1.8" />
-      <module name="axon-commons" target="1.8" />
-      <module name="axon-query-one" target="1.8" />
-      <module name="axon-query-two" target="1.8" />
+      <module name="axon-command" target="11" />
+      <module name="axon-commons" target="11" />
+      <module name="axon-query-one" target="11" />
+      <module name="axon-query-two" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
