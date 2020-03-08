@@ -20,3 +20,7 @@
     b. services: Classes that represent Services that have code to execute on @EventHandlers (fired by Aggregates' @EventSourcingHandlers and re-executed on application startup unless modified not do using a trace token), and handles @QueryHandlers.
     
 5. Axon Query Two: Same as Axon Query One, but can freely handle @EventHandlers and @QueryHandlers differently. Also receives events in Event Handlers in addition to Axon Query One receiving them. @QueryHandlers are load balanced between the two (default: Round Robin).
+
+6. Maintenance Branch:
+    a. Changed Java version from 1.8 to 11 for Commons and all Microservices.
+    b. Clened Commons' POM from unnecessary imports and test (Spring, Web, etc...).
