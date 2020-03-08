@@ -20,3 +20,17 @@
     b. services: Classes that represent Services that have code to execute on @EventHandlers (fired by Aggregates' @EventSourcingHandlers and re-executed on application startup unless modified not do using a trace token), and handles @QueryHandlers.
     
 5. Axon Query Two: Same as Axon Query One, but can freely handle @EventHandlers and @QueryHandlers differently. Also receives events in Event Handlers in addition to Axon Query One receiving them. @QueryHandlers are load balanced between the two (default: Round Robin).
+
+6. Maintenance Branch:
+    a. Changed Java version from 1.8 to 11 for Commons and all Microservices.
+    b. Clened Commons' POM from unnecessary imports and test (Spring, Web, etc...).
+    
+7. Ignoring previous events on startup: When an Axon Query Application starts, by default it makes use of a TrackingEventProcessor, which unlike the SubscribedEventProcessor, is managed from the Query Applications Thread to access the events source, rather than the Event Publisher's thread.
+
+To have the Application start with a clean slate, ignoring all events made prior to its startup, a custom configuration TrackingEventProcessorConfiguration is defined in a @Configuration class, which sets .andInitialTrackingToken(StreamableMessageSource::createHeadToken); (See AxonConfiguration.class)"
+
+8. Upcasting: When an event's definition has to changed (eg: add new field), this is handled by using Upcasters in the @EventHandler side in order to deal with events made prior to the change.
+
+The Upcaster (refer to PersonCreatedEventUpcaster.class) takes care of dealing with older events on what to do with them in order to upcast them to the current version of the event before they are passed to the @EventHandler/s.
+
+Within the Upcaster, the IntermediaryEvent (original Event) is a wrapped in ByteStream which can be serialized into a dom4j Document or a JSONDocument.

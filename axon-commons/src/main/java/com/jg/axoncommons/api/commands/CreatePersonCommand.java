@@ -14,5 +14,6 @@ public class CreatePersonCommand {
     private UUID id = UUID.randomUUID();
     private final String firstName;
     private final String lastName;
+    private final int age;
 
 }

@@ -8,11 +8,7 @@ import org.axonframework.eventhandling.EventHandler;
 import org.axonframework.queryhandling.QueryHandler;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -22,13 +18,16 @@ public class PersonService {
 
     @EventHandler
     public void on(final PersonCreatedEvent event) {
-        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName()));
+        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName(), event.getAge()));
         System.out.println("Person with ID [" + event.getId() + "] added to Map.");
     }
 
     @EventHandler
     public void on(final PersonUpdatedEvent event) {
-        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName()));
+        Person person = persons.get(event.getId());
+        person.setFirstName(event.getFirstName());
+        person.setLastName(event.getLastName());
+        persons.put(event.getId(), person);
         System.out.println("Person with ID [" + event.getId() + "] updated in Map.");
     }
 
@@ -36,7 +35,7 @@ public class PersonService {
     public List<Person> handle(final FindPersonsQuery query) {
         List<Person> personList = new ArrayList<>(persons.values());
 
-        if(null == query.getId()) {
+        if(null != query.getId()) {
             personList = personList.stream().filter(person -> person.getId().equals(query.getId())).collect(Collectors.toList());
         }
 
