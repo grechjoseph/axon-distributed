@@ -26,7 +26,7 @@ public class PersonAggregate {
 
     @CommandHandler
     public PersonAggregate(final CreatePersonCommand command) {
-        AggregateLifecycle.apply(new PersonCreatedEvent(command.getId(), command.getFirstName(), command.getLastName()));
+        AggregateLifecycle.apply(new PersonCreatedEvent(command.getId(), command.getFirstName(), command.getLastName(), command.getAge()));
     }
 
     @CommandHandler

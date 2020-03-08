@@ -23,7 +23,7 @@ public class PersonController {
 
     @PostMapping("/persons")
     public String createPerson(@RequestBody Person person) {
-        UUID generatedId = (UUID) commandGateway.send(new CreatePersonCommand(person.getFirstName(), person.getLastName())).join();
+        UUID generatedId = (UUID) commandGateway.send(new CreatePersonCommand(person.getFirstName(), person.getLastName(), person.getAge())).join();
         return "Person created with ID: " + generatedId + ".";
     }
 

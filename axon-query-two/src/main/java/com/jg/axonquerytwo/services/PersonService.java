@@ -23,13 +23,13 @@ public class PersonService {
 
     @EventHandler
     public void on(final PersonCreatedEvent event) {
-        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName()));
+        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName(), -1));
         System.out.println("Person with ID [" + event.getId() + "] added to Map.");
     }
 
     @EventHandler
     public void on(final PersonUpdatedEvent event) {
-        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName()));
+        persons.put(event.getId(), new Person(event.getId(), event.getFirstName(), event.getLastName(), -1));
         System.out.println("Person with ID [" + event.getId() + "] updated in Map.");
     }
 
